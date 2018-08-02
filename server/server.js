@@ -13,8 +13,22 @@ var io = socketIO(server);
 app.use(express.static(publicPath));
 
 io.on('connection', (socket) => {
-    
+
+    socket.emit('newMessage', {
+        from: 'test@testing.com',
+        text: 'Hey. This is my email.',
+        createdAt: 123
+    });
+
+    socket.on('createMessage', (message) => {
+        console.log('createMessage', message);
+    });
+
+    socket.on('disconnect', () => {
+        console.log('User disconnected.');
+    });
 });
+
 
 // app.get('/', (req, res) => {
 //     res.render('index.html');
