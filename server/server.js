@@ -15,7 +15,7 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
 
     socket.emit('newMessage', {
-        from: 'test@testing.com',
+        from: 'Wagner',
         text: 'Hey. This is my email.',
         createdAt: 123
     });
